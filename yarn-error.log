@@ -1,0 +1,32 @@
+Arguments: 
+  /usr/local/Cellar/node/9.7.1_1/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js run test
+
+PATH: 
+  /Users/cyrus/go_workspace/bin:/opt/local/bin:/opt/local/sbin:/Users/cyrus/.rvm/gems/ruby-2.3.1/bin:/Users/cyrus/.rvm/gems/ruby-2.3.1@global/bin:/Users/cyrus/.rvm/rubies/ruby-2.3.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/go/bin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/cyrus/.rvm/bin:/Users/cyrus/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  9.7.1
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Couldn't find a package.json file in "/Users/cyrus/Projects/finances_app"
+      at new MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:40048:15
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:98:30)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:109:13
+      at <anonymous>
