@@ -1,6 +1,6 @@
+module Main exposing (initialModel, main, view)
+
 import Html exposing (..)
---import Html.Attributes exposing (..)
---import Html.Events exposing (onClick)
 
 
 main : Program Never Model Msg
@@ -11,10 +11,6 @@ main =
         , update = update
         , subscriptions = subscriptions
         }
-
-
-
--- MODEL
 
 
 type alias Model =
@@ -62,6 +58,5 @@ subscriptions model =
 view : Model -> Html Msg
 view model =
     div []
-        [ text "Hello, world!"
-        , text (toString model)
+        [ h1 [] [ text "Maneki Neko" ]
         ]

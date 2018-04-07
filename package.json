@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "rm -rf public && brunch build && brunch watch --server"
+  },
   "devDependencies": {
     "elm-brunch": "^0.11.1"
   }
