@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "An app for managing my finances",
-    "repository": "https://github.com/cmvandrevala/finances-app.git",
+    "repository": "https://github.com/cmvandrevala/maneki-neko.git",
     "license": "MIT",
     "source-directories": [
         "src"
