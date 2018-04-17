@@ -1,7 +1,9 @@
 module Main exposing (main)
 
 import Html exposing (..)
-import BalanceSheetView
+import BalanceSheetView exposing (view)
+import Model exposing (initialModel)
+import Update exposing (update)
 import Model exposing (..)
 
 
@@ -9,14 +11,7 @@ main : Program Never Model Msg
 main =
     Html.program
         { init = ( initialModel, Cmd.none )
-        , view = BalanceSheetView.view
+        , view = view
         , update = update
         , subscriptions = \_ -> Sub.none
         }
-
-
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case msg of
-        NoOp ->
-            ( model, Cmd.none )

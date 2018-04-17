@@ -1,8 +1,14 @@
-module BalanceSheetRowDecoder exposing (balanceSheetRowDecoder)
+module BalanceSheetDecoder exposing (balanceSheetDecoder)
 
 import Json.Decode exposing (..)
 import Model exposing (..)
 import Date exposing (Date)
+
+
+balanceSheetDecoder : Decoder Model
+balanceSheetDecoder =
+    map Model
+        (field "balanceSheetRows" (list balanceSheetRowDecoder))
 
 
 balanceSheetRowDecoder : Decoder BalanceSheetRow

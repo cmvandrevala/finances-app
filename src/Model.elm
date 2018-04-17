@@ -1,6 +1,7 @@
 module Model exposing (..)
 
 import Date exposing (Date)
+import Http
 
 
 type alias Model =
@@ -24,4 +25,5 @@ initialModel =
 
 
 type Msg
-    = NoOp
+    = GetBalanceSheetRowsFromApi
+    | BalanceSheet (Result Http.Error Model)
