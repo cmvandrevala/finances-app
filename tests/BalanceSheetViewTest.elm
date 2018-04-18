@@ -25,23 +25,25 @@ lastUpdatedTwo =
 mockModel : Model
 mockModel =
     (Model
-        [ (BalanceSheetRow
-            lastUpdatedOne
-            "institution one"
-            "account one"
-            "investment one"
-            "owner one"
-            100.23
-          )
-        , (BalanceSheetRow
-            lastUpdatedTwo
-            "institution two"
-            "account two"
-            "investment two"
-            "owner two"
-            98
-          )
-        ]
+        (BalanceSheet
+            [ (BalanceSheetRow
+                lastUpdatedOne
+                "institution one"
+                "account one"
+                "investment one"
+                "owner one"
+                100.23
+              )
+            , (BalanceSheetRow
+                lastUpdatedTwo
+                "institution two"
+                "account two"
+                "investment two"
+                "owner two"
+                98
+              )
+            ]
+        )
     )
 
 

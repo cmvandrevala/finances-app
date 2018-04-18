@@ -11,7 +11,10 @@ update msg model =
         GetBalanceSheetRowsFromApi ->
             ( model, getBalanceSheetRowsFromApi )
 
-        BalanceSheet _ ->
+        UpdateBalanceSheet (Ok balanceSheet) ->
+            ( { model | balanceSheet = balanceSheet }, Cmd.none )
+
+        UpdateBalanceSheet (Err _) ->
             ( model, Cmd.none )
 
 
@@ -21,4 +24,4 @@ getBalanceSheetRowsFromApi =
         request =
             Http.get "http://localhost:4000/balance_sheet_rows" balanceSheetDecoder
     in
-        Http.send BalanceSheet request
+        Http.send UpdateBalanceSheet request

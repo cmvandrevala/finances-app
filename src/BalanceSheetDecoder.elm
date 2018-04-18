@@ -5,9 +5,9 @@ import Model exposing (..)
 import Date exposing (Date)
 
 
-balanceSheetDecoder : Decoder Model
+balanceSheetDecoder : Decoder BalanceSheet
 balanceSheetDecoder =
-    map Model
+    map BalanceSheet
         (field "balanceSheetRows" (list balanceSheetRowDecoder))
 
 

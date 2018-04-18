@@ -5,8 +5,12 @@ import Http
 
 
 type alias Model =
-    { balanceSheetRows : List BalanceSheetRow
+    { balanceSheet : BalanceSheet
     }
+
+
+type alias BalanceSheet =
+    { rows : List BalanceSheetRow }
 
 
 type alias BalanceSheetRow =
@@ -21,9 +25,9 @@ type alias BalanceSheetRow =
 
 initialModel : Model
 initialModel =
-    (Model [])
+    (Model (BalanceSheet []))
 
 
 type Msg
     = GetBalanceSheetRowsFromApi
-    | BalanceSheet (Result Http.Error Model)
+    | UpdateBalanceSheet (Result Http.Error BalanceSheet)

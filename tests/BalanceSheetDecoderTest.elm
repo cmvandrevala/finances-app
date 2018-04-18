@@ -26,7 +26,7 @@ suite =
                 rows =
                     [ (BalanceSheetRow lastUpdated "institution name" "account name" "investment name" "owner name" 1002.34) ]
             in
-                expect (decodeString balanceSheetDecoder json) to equal (Ok (Model rows))
+                expect (decodeString balanceSheetDecoder json) to equal (Ok (BalanceSheet rows))
         , it "decodes two balance sheet rows in JSON form" <|
             let
                 json =
@@ -37,5 +37,5 @@ suite =
                     , (BalanceSheetRow (fromParts 2013 Feb 6 0 0 0 0) "institution two" "account two" "investment two" "owner two" 29)
                     ]
             in
-                expect (decodeString balanceSheetDecoder json) to equal (Ok (Model rows))
+                expect (decodeString balanceSheetDecoder json) to equal (Ok (BalanceSheet rows))
         ]

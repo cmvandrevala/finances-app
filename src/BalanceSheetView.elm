@@ -17,7 +17,7 @@ view model =
 
 allRows : Model -> List (Html Msg)
 allRows model =
-    [ formattedHeaders ] ++ (List.map formattedBalanceSheetRow model.balanceSheetRows)
+    [ formattedHeaders ] ++ (List.map formattedBalanceSheetRow model.balanceSheet.rows)
 
 
 formattedHeaders : Html Msg
