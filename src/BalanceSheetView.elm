@@ -1,16 +1,18 @@
 module BalanceSheetView exposing (view)
 
-import Html exposing (div, h1, Html, table, td, text, th, tr)
+import Html exposing (button, div, h1, Html, table, td, text, th, tr)
 import Html.Attributes exposing (class)
 import Model exposing (..)
 import Date exposing (Date, day, month, year)
 import FormatNumber
+import Html.Events exposing (onClick)
 
 
 view : Model -> Html Msg
 view model =
     div [ class "container" ]
         [ h1 [] [ text "Balance Sheet" ]
+        , button [ class "get-balance-sheet", onClick GetBalanceSheetRowsFromApi ] [ text "Refresh the Balance Sheet" ]
         , table [] (allRows model)
         ]
 

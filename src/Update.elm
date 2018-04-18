@@ -22,6 +22,6 @@ getBalanceSheetRowsFromApi : Cmd Msg
 getBalanceSheetRowsFromApi =
     let
         request =
-            Http.get "http://localhost:4000/balance_sheet_rows" balanceSheetDecoder
+            Http.get "http://localhost:5000/balance_sheet_rows" balanceSheetDecoder
     in
         Http.send UpdateBalanceSheet request

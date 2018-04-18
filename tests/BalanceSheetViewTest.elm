@@ -56,6 +56,12 @@ suite =
                 |> Query.find [ tag "h1" ]
                 |> Query.has [ text "Balance Sheet" ]
             )
+        , it "has a button to refresh the balance sheet" <|
+            ((view initialModel)
+                |> Query.fromHtml
+                |> Query.findAll [ class "get-balance-sheet" ]
+                |> Query.count (Expect.equal 1)
+            )
         , it "displays the last updated header" <|
             ((view initialModel)
                 |> Query.fromHtml
