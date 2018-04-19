@@ -8,6 +8,9 @@ import BalanceSheetDecoder exposing (balanceSheetDecoder)
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
+        UrlChange location ->
+            ( model, Cmd.none )
+
         GetBalanceSheetRowsFromApi ->
             ( model, getBalanceSheetRowsFromApi )
 

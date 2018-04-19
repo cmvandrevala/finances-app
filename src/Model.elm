@@ -2,6 +2,7 @@ module Model exposing (..)
 
 import Date exposing (Date)
 import Http
+import Navigation
 
 
 type alias Model =
@@ -29,5 +30,6 @@ initialModel =
 
 
 type Msg
-    = GetBalanceSheetRowsFromApi
+    = UrlChange Navigation.Location
+    | GetBalanceSheetRowsFromApi
     | UpdateBalanceSheet (Result Http.Error BalanceSheet)
