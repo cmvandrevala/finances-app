@@ -1,5 +1,7 @@
 {
   "scripts": {
+    "setup": "yarn install && elm-package install",
+    "test": "elm test",
     "build": "rm -rf public && brunch build && brunch watch --server"
   },
   "devDependencies": {
