@@ -20,7 +20,7 @@ view model =
 
 allRows : Model -> List (Html Msg)
 allRows model =
-    [ formattedHeaders ] ++ (List.map formattedBalanceSheetRow model.balanceSheet.rows)
+    [ formattedHeaders ] ++ (List.map formattedBalanceSheetRow model.balanceSheet.assets)
 
 
 formattedHeaders : Html Msg
