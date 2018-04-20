@@ -6,6 +6,7 @@ import Model exposing (..)
 import Date exposing (Date, day, month, year)
 import FormatNumber
 import Html.Events exposing (onClick)
+import DateFormatter exposing (formatMonth)
 
 
 view : Model -> Html Msg
@@ -50,49 +51,9 @@ formattedDate : Date -> String
 formattedDate date =
     (toString (year date))
         ++ "-"
-        ++ (formattedMonth (month date))
+        ++ (formatMonth (month date))
         ++ "-"
         ++ (toString (day date))
-
-
-formattedMonth : Date.Month -> String
-formattedMonth month =
-    case month of
-        Date.Jan ->
-            "01"
-
-        Date.Feb ->
-            "02"
-
-        Date.Mar ->
-            "03"
-
-        Date.Apr ->
-            "04"
-
-        Date.May ->
-            "05"
-
-        Date.Jun ->
-            "06"
-
-        Date.Jul ->
-            "07"
-
-        Date.Aug ->
-            "08"
-
-        Date.Sep ->
-            "09"
-
-        Date.Oct ->
-            "10"
-
-        Date.Nov ->
-            "11"
-
-        Date.Dec ->
-            "12"
 
 
 formattedValue : Float -> String

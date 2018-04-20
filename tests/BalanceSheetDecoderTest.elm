@@ -38,4 +38,22 @@ suite =
                     ]
             in
                 expect (decodeString balanceSheetDecoder json) to equal (Ok (BalanceSheet rows))
+        , it "returns an error for an invalid date format" <|
+            let
+                json =
+                    "{\"balanceSheetRows\": [{\"lastUpdated\": \"invalid!!!\", \"institution\": \"institution one\", \"account\": \"account one\", \"investment\": \"investment one\", \"owner\": \"owner one\", \"value\": 102.34}]}"
+
+                expectedMessage =
+                    "I ran into a `fail` decoder at _.balanceSheetRows[0].lastUpdated: Unable to parse 'invalid!!!' as a date. Dates must be in the ISO 8601 format."
+            in
+                expect (decodeString balanceSheetDecoder json) to equal (Err expectedMessage)
+        , it "returns an error for invalid JSON" <|
+            let
+                json =
+                    "{\"invalid\": \"json\"}"
+
+                expectedMessage =
+                    "Expecting an object with a field named `balanceSheetRows` but instead got: {\"invalid\":\"json\"}"
+            in
+                expect (decodeString balanceSheetDecoder json) to equal (Err expectedMessage)
         ]
