@@ -1,14 +1,15 @@
 module BalanceSheetDecoder exposing (balanceSheetDecoder)
 
 import Json.Decode exposing (..)
-import Model exposing (..)
+import Model exposing (BalanceSheet, BalanceSheetRow)
 import Date exposing (Date)
 
 
 balanceSheetDecoder : Decoder BalanceSheet
 balanceSheetDecoder =
-    map BalanceSheet
-        (field "balanceSheetRows" (list balanceSheetRowDecoder))
+    map2 BalanceSheet
+        (field "assets" (list balanceSheetRowDecoder))
+        (field "liabilities" (list balanceSheetRowDecoder))
 
 
 balanceSheetRowDecoder : Decoder BalanceSheetRow

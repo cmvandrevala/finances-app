@@ -17,7 +17,7 @@ suite =
             [ it "updates the balance sheet with new data" <|
                 let
                     newBalanceSheet =
-                        (BalanceSheet [ (BalanceSheetRow (fromParts 1 Jan 1 0 0 0 0) "" "" "" "" 0.0) ])
+                        (BalanceSheet [ (BalanceSheetRow (fromParts 1 Jan 1 0 0 0 0) "" "" "" "" 0.0) ] [])
 
                     httpResponse =
                         (Ok newBalanceSheet)
@@ -38,7 +38,7 @@ suite =
             , it "returns Cmd.none as a message for a successful response" <|
                 let
                     newBalanceSheet =
-                        (BalanceSheet [ (BalanceSheetRow (fromParts 1 Jan 1 0 0 0 0) "" "" "" "" 0.0) ])
+                        (BalanceSheet [] [ (BalanceSheetRow (fromParts 1 Jan 1 0 0 0 0) "" "" "" "" 0.0) ])
 
                     httpResponse =
                         (Ok newBalanceSheet)

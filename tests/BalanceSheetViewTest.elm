@@ -12,22 +12,12 @@ import Date exposing (..)
 import Date.Extra exposing (..)
 
 
-lastUpdatedOne : Date
-lastUpdatedOne =
-    fromParts 2000 Jan 12 0 0 0 0
-
-
-lastUpdatedTwo : Date
-lastUpdatedTwo =
-    fromParts 2000 Feb 12 0 0 0 0
-
-
 mockModel : Model
 mockModel =
     (Model
         (BalanceSheet
             [ (BalanceSheetRow
-                lastUpdatedOne
+                (fromParts 2000 Jan 12 0 0 0 0)
                 "institution one"
                 "account one"
                 "investment one"
@@ -35,7 +25,24 @@ mockModel =
                 100.23
               )
             , (BalanceSheetRow
-                lastUpdatedTwo
+                (fromParts 2000 May 17 0 0 0 0)
+                "institution two"
+                "account two"
+                "investment two"
+                "owner two"
+                185
+              )
+            ]
+            [ (BalanceSheetRow
+                (fromParts 2005 Jul 12 0 0 0 0)
+                "institution three"
+                "account three"
+                "investment three"
+                "owner one"
+                1.9
+              )
+            , (BalanceSheetRow
+                (fromParts 2000 Aug 1 0 0 0 0)
                 "institution two"
                 "account two"
                 "investment two"
@@ -151,6 +158,6 @@ suite =
                 |> Query.fromHtml
                 |> Query.findAll [ class "balance-sheet-row" ]
                 |> Query.index 1
-                |> Query.has [ text "98.00" ]
+                |> Query.has [ text "185.00" ]
             )
         ]

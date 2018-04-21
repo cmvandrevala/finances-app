@@ -11,7 +11,9 @@ type alias Model =
 
 
 type alias BalanceSheet =
-    { rows : List BalanceSheetRow }
+    { assets : List BalanceSheetRow
+    , liabilities : List BalanceSheetRow
+    }
 
 
 type alias BalanceSheetRow =
@@ -26,7 +28,7 @@ type alias BalanceSheetRow =
 
 initialModel : Model
 initialModel =
-    (Model (BalanceSheet []))
+    (Model (BalanceSheet [] []))
 
 
 type Msg
