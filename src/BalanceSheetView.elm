@@ -1,6 +1,6 @@
 module BalanceSheetView exposing (view)
 
-import Html exposing (button, div, h1, Html, table, td, text, th, tr)
+import Html exposing (button, div, h1, h2, Html, table, td, text, th, tr)
 import Html.Attributes exposing (class)
 import Model exposing (..)
 import Date exposing (Date, day, month, year)
@@ -14,13 +14,16 @@ view model =
     div [ class "container" ]
         [ h1 [] [ text "Balance Sheet" ]
         , button [ class "get-balance-sheet", onClick GetBalanceSheetRowsFromApi ] [ text "Refresh the Balance Sheet" ]
-        , table [] (allRows model)
+        , h2 [ class "assets-header" ] [ text "Assets" ]
+        , table [] (allRows model.balanceSheet.assets)
+        , h2 [ class "liabilities-header" ] [ text "Liabilities" ]
+        , table [] (allRows model.balanceSheet.liabilities)
         ]
 
 
-allRows : Model -> List (Html Msg)
-allRows model =
-    [ formattedHeaders ] ++ (List.map formattedBalanceSheetRow model.balanceSheet.assets)
+allRows : List BalanceSheetRow -> List (Html Msg)
+allRows rows =
+    [ formattedHeaders ] ++ (List.map formattedBalanceSheetRow rows)
 
 
 formattedHeaders : Html Msg

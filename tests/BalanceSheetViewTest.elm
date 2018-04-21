@@ -69,47 +69,47 @@ suite =
                 |> Query.findAll [ class "get-balance-sheet" ]
                 |> Query.count (Expect.equal 1)
             )
-        , it "displays the last updated header" <|
+        , it "displays the last updated header for assets and liabilities" <|
             ((view initialModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "last-updated-header" ]
-                |> Query.count (Expect.equal 1)
+                |> Query.count (Expect.equal 2)
             )
-        , it "displays the institution header" <|
+        , it "displays the institution header for assets and liabilities" <|
             ((view initialModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "institution-header" ]
-                |> Query.count (Expect.equal 1)
+                |> Query.count (Expect.equal 2)
             )
-        , it "displays the account header" <|
+        , it "displays the account header for assets and liabilities" <|
             ((view initialModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "account-header" ]
-                |> Query.count (Expect.equal 1)
+                |> Query.count (Expect.equal 2)
             )
-        , it "displays the investment header" <|
+        , it "displays the investment header for assets and liabilities" <|
             ((view initialModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "investment-header" ]
-                |> Query.count (Expect.equal 1)
+                |> Query.count (Expect.equal 2)
             )
-        , it "displays the owner header" <|
+        , it "displays the owner header for assets and liabilities" <|
             ((view initialModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "owner-header" ]
-                |> Query.count (Expect.equal 1)
+                |> Query.count (Expect.equal 2)
             )
-        , it "displays the value header" <|
+        , it "displays the value header for assets and liabilities" <|
             ((view initialModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "value-header" ]
-                |> Query.count (Expect.equal 1)
+                |> Query.count (Expect.equal 2)
             )
-        , it "displays each of the balance sheet rows" <|
+        , it "displays each of the balance sheet rows for assets and liabilities" <|
             ((view mockModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "balance-sheet-row" ]
-                |> Query.count (Expect.equal 2)
+                |> Query.count (Expect.equal 4)
             )
         , it "displays a formatted last-updated date associated with a row" <|
             ((view mockModel)
@@ -159,5 +159,17 @@ suite =
                 |> Query.findAll [ class "balance-sheet-row" ]
                 |> Query.index 1
                 |> Query.has [ text "185.00" ]
+            )
+        , it "has a header for the assets" <|
+            ((view mockModel)
+                |> Query.fromHtml
+                |> Query.findAll [ class "assets-header" ]
+                |> Query.count (Expect.equal 1)
+            )
+        , it "has a header for the liabilities" <|
+            ((view mockModel)
+                |> Query.fromHtml
+                |> Query.findAll [ class "liabilities-header" ]
+                |> Query.count (Expect.equal 1)
             )
         ]
