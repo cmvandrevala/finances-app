@@ -7,6 +7,7 @@ import Navigation
 
 type alias Model =
     { balanceSheet : BalanceSheet
+    , baseUrl : String
     }
 
 
@@ -26,9 +27,8 @@ type alias BalanceSheetRow =
     }
 
 
-initialModel : Model
-initialModel =
-    (Model (BalanceSheet [] []))
+type alias Flags =
+    { baseUrl : String }
 
 
 type Msg

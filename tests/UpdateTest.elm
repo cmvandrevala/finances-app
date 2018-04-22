@@ -10,6 +10,11 @@ import Update exposing (update)
 import Http
 
 
+initialModel : Model
+initialModel =
+    (Model (BalanceSheet [] []) "some/url")
+
+
 suite : Test
 suite =
     describe "Update"
@@ -25,7 +30,7 @@ suite =
                     ( newModel, newMsg ) =
                         update (UpdateBalanceSheet httpResponse) initialModel
                 in
-                    expect newModel to equal (Model newBalanceSheet)
+                    expect newModel to equal (Model newBalanceSheet "some/url")
             , it "does not update the balance sheet if it receives an error" <|
                 let
                     httpResponse =

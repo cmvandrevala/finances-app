@@ -12,7 +12,7 @@ update msg model =
             ( model, Cmd.none )
 
         GetBalanceSheetRowsFromApi ->
-            ( model, getBalanceSheetRowsFromApi )
+            ( model, (getBalanceSheetRowsFromApi model) )
 
         UpdateBalanceSheet (Ok balanceSheet) ->
             ( { model | balanceSheet = balanceSheet }, Cmd.none )
@@ -21,10 +21,10 @@ update msg model =
             ( model, Cmd.none )
 
 
-getBalanceSheetRowsFromApi : Cmd Msg
-getBalanceSheetRowsFromApi =
+getBalanceSheetRowsFromApi : Model -> Cmd Msg
+getBalanceSheetRowsFromApi model =
     let
         request =
-            Http.get "http://localhost:5000/balance_sheet_rows" balanceSheetDecoder
+            Http.get (model.baseUrl ++ "/balance_sheet_rows") balanceSheetDecoder
     in
         Http.send UpdateBalanceSheet request

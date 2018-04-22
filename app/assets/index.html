@@ -13,7 +13,7 @@
             <script src="main.js"></script>
             <script type="text/javascript">
               var node = document.getElementById('main');
-              var app = Elm.Main.embed(node);
+              var app = Elm.Main.embed(node, {baseUrl: "http://localhost:5000"});
             </script>
         </div>
     </body>

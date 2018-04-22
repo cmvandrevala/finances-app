@@ -1,15 +1,14 @@
 module Main exposing (main)
 
 import BalanceSheetView exposing (view)
-import Model exposing (initialModel)
 import Update exposing (update)
 import Model exposing (..)
 import Navigation
 
 
-main : Program Never Model Msg
+main : Program Flags Model Msg
 main =
-    Navigation.program UrlChange
+    Navigation.programWithFlags UrlChange
         { init = init
         , view = view
         , update = update
@@ -17,6 +16,10 @@ main =
         }
 
 
-init : Navigation.Location -> ( Model, Cmd Msg )
-init location =
-    ( initialModel, Cmd.none )
+init : Flags -> Navigation.Location -> ( Model, Cmd Msg )
+init flags _ =
+    let
+        initialModel =
+            (Model (BalanceSheet [] []) flags.baseUrl)
+    in
+        ( initialModel, Cmd.none )

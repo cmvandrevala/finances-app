@@ -51,6 +51,7 @@ mockModel =
               )
             ]
         )
+        "some/base/url"
     )
 
 
@@ -58,49 +59,49 @@ suite : Test
 suite =
     describe "the balance sheet view"
         [ it "has a title of Balance Sheet" <|
-            ((view initialModel)
+            ((view mockModel)
                 |> Query.fromHtml
                 |> Query.find [ tag "h1" ]
                 |> Query.has [ text "Balance Sheet" ]
             )
         , it "has a button to refresh the balance sheet" <|
-            ((view initialModel)
+            ((view mockModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "get-balance-sheet" ]
                 |> Query.count (Expect.equal 1)
             )
         , it "displays the last updated header for assets and liabilities" <|
-            ((view initialModel)
+            ((view mockModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "last-updated-header" ]
                 |> Query.count (Expect.equal 2)
             )
         , it "displays the institution header for assets and liabilities" <|
-            ((view initialModel)
+            ((view mockModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "institution-header" ]
                 |> Query.count (Expect.equal 2)
             )
         , it "displays the account header for assets and liabilities" <|
-            ((view initialModel)
+            ((view mockModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "account-header" ]
                 |> Query.count (Expect.equal 2)
             )
         , it "displays the investment header for assets and liabilities" <|
-            ((view initialModel)
+            ((view mockModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "investment-header" ]
                 |> Query.count (Expect.equal 2)
             )
         , it "displays the owner header for assets and liabilities" <|
-            ((view initialModel)
+            ((view mockModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "owner-header" ]
                 |> Query.count (Expect.equal 2)
             )
         , it "displays the value header for assets and liabilities" <|
-            ((view initialModel)
+            ((view mockModel)
                 |> Query.fromHtml
                 |> Query.findAll [ class "value-header" ]
                 |> Query.count (Expect.equal 2)
