@@ -8,6 +8,7 @@ import Navigation
 type alias Model =
     { balanceSheet : BalanceSheet
     , baseUrl : String
+    , route : Route
     }
 
 
@@ -35,3 +36,8 @@ type Msg
     = UrlChange Navigation.Location
     | GetBalanceSheetRowsFromApi
     | UpdateBalanceSheet (Result Http.Error BalanceSheet)
+
+
+type Route
+    = HomeRoute
+    | BalanceSheetRoute

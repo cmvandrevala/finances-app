@@ -52,6 +52,7 @@ mockModel =
             ]
         )
         "some/base/url"
+        HomeRoute
     )
 
 

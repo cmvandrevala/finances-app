@@ -12,7 +12,7 @@ import Http
 
 initialModel : Model
 initialModel =
-    (Model (BalanceSheet [] []) "some/url")
+    (Model (BalanceSheet [] []) "some/url" HomeRoute)
 
 
 suite : Test
@@ -30,7 +30,7 @@ suite =
                     ( newModel, newMsg ) =
                         update (UpdateBalanceSheet httpResponse) initialModel
                 in
-                    expect newModel to equal (Model newBalanceSheet "some/url")
+                    expect newModel to equal (Model newBalanceSheet "some/url" HomeRoute)
             , it "does not update the balance sheet if it receives an error" <|
                 let
                     httpResponse =
