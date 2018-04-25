@@ -41,3 +41,4 @@ type Msg
 type Route
     = HomeRoute
     | BalanceSheetRoute
+    | NotFoundRoute
