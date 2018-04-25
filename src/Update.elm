@@ -1,15 +1,16 @@
 module Update exposing (update)
 
-import Model exposing (..)
-import Http
 import BalanceSheetDecoder exposing (balanceSheetDecoder)
+import Http
+import Model exposing (..)
+import Routing exposing (parseLocation)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         UrlChange location ->
-            ( model, Cmd.none )
+            ( { model | route = (parseLocation location) }, Cmd.none )
 
         GetBalanceSheetRowsFromApi ->
             ( model, (getBalanceSheetRowsFromApi model) )

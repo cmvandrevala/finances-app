@@ -1,6 +1,6 @@
 module Main exposing (main)
 
-import BalanceSheetView exposing (view)
+import View exposing (view)
 import Update exposing (update)
 import Model exposing (..)
 import Navigation
@@ -20,6 +20,6 @@ init : Flags -> Navigation.Location -> ( Model, Cmd Msg )
 init flags _ =
     let
         initialModel =
-            (Model (BalanceSheet [] []) flags.baseUrl)
+            (Model (BalanceSheet [] []) flags.baseUrl HomeRoute)
     in
         ( initialModel, Cmd.none )

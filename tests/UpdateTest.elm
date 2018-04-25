@@ -8,6 +8,12 @@ import Date.Extra exposing (fromParts)
 import Date exposing (Month(..))
 import Update exposing (update)
 import Http
+import Navigation exposing (Location)
+
+
+mockLocation : String -> Location
+mockLocation endpoint =
+    (Location "" "" "" "" "" "" "" "" endpoint "" "")
 
 
 initialModel : Model
@@ -18,7 +24,27 @@ initialModel =
 suite : Test
 suite =
     describe "Update"
-        [ describe "BalanceSheet"
+        [ describe "UrlChange"
+            [ it "changes the route" <|
+                let
+                    msg =
+                        UrlChange (mockLocation "#balance_sheet")
+
+                    ( newModel, newMsg ) =
+                        update msg initialModel
+                in
+                    expect newModel.route to equal BalanceSheetRoute
+            , it "returns a command of Cmd.none" <|
+                let
+                    msg =
+                        UrlChange (mockLocation "#balance_sheet")
+
+                    ( newModel, newMsg ) =
+                        update msg initialModel
+                in
+                    expect newMsg to equal Cmd.none
+            ]
+        , describe "BalanceSheet"
             [ it "updates the balance sheet with new data" <|
                 let
                     newBalanceSheet =
