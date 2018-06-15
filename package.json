@@ -2,9 +2,10 @@
   "scripts": {
     "setup": "yarn install && elm-package install",
     "test": "elm test",
-    "build": "rm -rf public && brunch build && brunch watch --server"
+    "start": "rm -rf public && brunch build && brunch watch --server"
   },
   "devDependencies": {
+    "brunch": "^2.10.12",
     "elm-brunch": "^0.11.1"
   }
 }
