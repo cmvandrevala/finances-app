@@ -1,4 +1,4 @@
-module Model exposing (..)
+module Model exposing (BalanceSheet, BalanceSheetRow, Flags, Model, Msg(..), Route(..))
 
 import Date exposing (Date)
 import Http
@@ -42,3 +42,4 @@ type Route
     = HomeRoute
     | BalanceSheetRoute
     | NotFoundRoute
+    | UpcomingExpensesRoute

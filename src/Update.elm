@@ -10,10 +10,10 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         UrlChange location ->
-            ( { model | route = (parseLocation location) }, Cmd.none )
+            ( { model | route = parseLocation location }, Cmd.none )
 
         GetBalanceSheetRowsFromApi ->
-            ( model, (getBalanceSheetRowsFromApi model) )
+            ( model, getBalanceSheetRowsFromApi model )
 
         UpdateBalanceSheet (Ok balanceSheet) ->
             ( { model | balanceSheet = balanceSheet }, Cmd.none )
@@ -28,4 +28,4 @@ getBalanceSheetRowsFromApi model =
         request =
             Http.get (model.baseUrl ++ "/balance_sheet_rows") balanceSheetDecoder
     in
-        Http.send UpdateBalanceSheet request
+    Http.send UpdateBalanceSheet request

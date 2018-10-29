@@ -1,8 +1,8 @@
 module BalanceSheetDecoder exposing (balanceSheetDecoder)
 
+import Date exposing (Date)
 import Json.Decode exposing (..)
 import Model exposing (BalanceSheet, BalanceSheetRow)
-import Date exposing (Date)
 
 
 balanceSheetDecoder : Decoder BalanceSheet
@@ -35,4 +35,4 @@ dateDecoder =
                 Err error ->
                     fail error
     in
-        string |> andThen convert
+    string |> andThen convert

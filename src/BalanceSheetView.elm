@@ -1,12 +1,12 @@
 module BalanceSheetView exposing (view)
 
-import Html exposing (button, div, h1, h2, Html, table, td, text, th, tr)
-import Html.Attributes exposing (class)
-import Model exposing (..)
 import Date exposing (Date, day, month, year)
-import FormatNumber
-import Html.Events exposing (onClick)
 import DateFormatter exposing (formatMonth)
+import FormatNumber
+import Html exposing (Html, button, div, h1, h2, table, td, text, th, tr)
+import Html.Attributes exposing (class)
+import Html.Events exposing (onClick)
+import Model exposing (..)
 
 
 view : Model -> Html Msg
@@ -23,7 +23,7 @@ view model =
 
 allRows : List BalanceSheetRow -> List (Html Msg)
 allRows rows =
-    [ formattedHeaders ] ++ (List.map formattedBalanceSheetRow rows)
+    [ formattedHeaders ] ++ List.map formattedBalanceSheetRow rows
 
 
 formattedHeaders : Html Msg
@@ -52,11 +52,11 @@ formattedBalanceSheetRow row =
 
 formattedDate : Date -> String
 formattedDate date =
-    (toString (year date))
+    toString (year date)
         ++ "-"
-        ++ (formatMonth (month date))
+        ++ formatMonth (month date)
         ++ "-"
-        ++ (toString (day date))
+        ++ toString (day date)
 
 
 formattedValue : Float -> String
@@ -70,4 +70,4 @@ formattedValue value =
             , negativeSuffix = ""
             }
     in
-        FormatNumber.format locale value
+    FormatNumber.format locale value

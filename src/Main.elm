@@ -1,9 +1,9 @@
 module Main exposing (main)
 
-import View exposing (view)
-import Update exposing (update)
 import Model exposing (..)
 import Navigation
+import Update exposing (update)
+import View exposing (view)
 
 
 main : Program Flags Model Msg
@@ -20,6 +20,6 @@ init : Flags -> Navigation.Location -> ( Model, Cmd Msg )
 init flags _ =
     let
         initialModel =
-            (Model (BalanceSheet [] []) flags.baseUrl HomeRoute)
+            Model (BalanceSheet [] []) flags.baseUrl HomeRoute
     in
-        ( initialModel, Cmd.none )
+    ( initialModel, Cmd.none )

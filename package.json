@@ -5,7 +5,9 @@
     "start": "rm -rf public && brunch build && brunch watch --server"
   },
   "devDependencies": {
-    "brunch": "^2.10.12",
-    "elm-brunch": "^0.11.1"
+    "elm": "0.18",
+    "elm-brunch": "^0.11.1",
+    "brunch": "^2.10.17",
+    "elm-test": "^0.18.13-beta3"
   }
 }
