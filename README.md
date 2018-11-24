@@ -1,5 +1,7 @@
 # Maneki Neko
 
+[![CircleCI](https://circleci.com/gh/cmvandrevala/maneki-neko/tree/master.svg?style=svg)](https://circleci.com/gh/cmvandrevala/maneki-neko/tree/master)
+
 ## Background
 
 A user interface for my [portfolio analysis app](https://github.com/cmvandrevala/portfolio_analysis).
