@@ -1,38 +1,33 @@
 module BalanceSheetDecoder exposing (balanceSheetDecoder)
 
-import Date exposing (Date)
-import Json.Decode exposing (..)
+import Json.Decode as JD
 import Model exposing (BalanceSheet, BalanceSheetRow)
+import Time
 
 
-balanceSheetDecoder : Decoder BalanceSheet
+balanceSheetDecoder : JD.Decoder BalanceSheet
 balanceSheetDecoder =
-    map2 BalanceSheet
-        (field "assets" (list balanceSheetRowDecoder))
-        (field "liabilities" (list balanceSheetRowDecoder))
+    JD.map2 BalanceSheet
+        (JD.field "assets" (JD.list balanceSheetRowDecoder))
+        (JD.field "liabilities" (JD.list balanceSheetRowDecoder))
 
 
-balanceSheetRowDecoder : Decoder BalanceSheetRow
+balanceSheetRowDecoder : JD.Decoder BalanceSheetRow
 balanceSheetRowDecoder =
-    map6 BalanceSheetRow
-        (field "lastUpdated" dateDecoder)
-        (field "institution" string)
-        (field "account" string)
-        (field "investment" string)
-        (field "owner" string)
-        (field "value" float)
+    JD.map6 BalanceSheetRow
+        (JD.field "lastUpdated" posixDecoder)
+        (JD.field "institution" JD.string)
+        (JD.field "account" JD.string)
+        (JD.field "investment" JD.string)
+        (JD.field "owner" JD.string)
+        (JD.field "value" JD.float)
 
 
-dateDecoder : Decoder Date
-dateDecoder =
-    let
-        convert : String -> Decoder Date
-        convert raw =
-            case Date.fromString raw of
-                Ok date ->
-                    succeed date
+posixDecoder : JD.Decoder Time.Posix
+posixDecoder =
+    JD.int |> JD.andThen toPosix
 
-                Err error ->
-                    fail error
-    in
-    string |> andThen convert
+
+toPosix : Int -> JD.Decoder Time.Posix
+toPosix epochInMilliseconds =
+    JD.succeed (Time.millisToPosix epochInMilliseconds)

@@ -1,25 +1,20 @@
 module Main exposing (main)
 
+import Browser
+import Browser.Navigation as Nav
 import Model exposing (..)
-import Navigation
 import Update exposing (update)
+import Url
 import View exposing (view)
 
 
 main : Program Flags Model Msg
 main =
-    Navigation.programWithFlags UrlChange
-        { init = init
+    Browser.application
+        { init = Model.init
         , view = view
         , update = update
         , subscriptions = \_ -> Sub.none
+        , onUrlChange = UrlChanged
+        , onUrlRequest = LinkClicked
         }
-
-
-init : Flags -> Navigation.Location -> ( Model, Cmd Msg )
-init flags _ =
-    let
-        initialModel =
-            Model (BalanceSheet [] []) flags.baseUrl HomeRoute
-    in
-    ( initialModel, Cmd.none )

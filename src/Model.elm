@@ -1,13 +1,18 @@
-module Model exposing (BalanceSheet, BalanceSheetRow, Flags, Model, Msg(..), Route(..))
+module Model exposing (BalanceSheet, BalanceSheetRow, Flags, Model, Msg(..), Route(..), init)
 
-import Date exposing (Date)
+import Browser
+import Browser.Navigation as Nav
 import Http
-import Navigation
+import Time
+import Url
 
 
 type alias Model =
-    { balanceSheet : BalanceSheet
+    { appName : String
+    , balanceSheet : BalanceSheet
     , baseUrl : String
+    , key : Nav.Key
+    , url : Url.Url
     , route : Route
     }
 
@@ -19,7 +24,7 @@ type alias BalanceSheet =
 
 
 type alias BalanceSheetRow =
-    { lastUpdated : Date
+    { lastUpdated : Time.Posix
     , institution : String
     , account : String
     , investment : String
@@ -33,8 +38,9 @@ type alias Flags =
 
 
 type Msg
-    = UrlChange Navigation.Location
-    | GetBalanceSheetRowsFromApi
+    = GetBalanceSheetRowsFromApi
+    | LinkClicked Browser.UrlRequest
+    | UrlChanged Url.Url
     | UpdateBalanceSheet (Result Http.Error BalanceSheet)
 
 
@@ -43,3 +49,16 @@ type Route
     | BalanceSheetRoute
     | NotFoundRoute
     | UpcomingExpensesRoute
+
+
+init : Flags -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
+init flags url key =
+    ( Model
+        "Maneki Neko"
+        (BalanceSheet [] [])
+        flags.baseUrl
+        key
+        url
+        HomeRoute
+    , Cmd.none
+    )

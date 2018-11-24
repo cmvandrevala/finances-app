@@ -1,27 +1,34 @@
 module RoutingTest exposing (suite)
 
-import ElmTestBDDStyle exposing (..)
+import ElmTestBDDStyle exposing (expect, it, to)
 import Expect exposing (equal)
-import Model exposing (..)
-import Navigation exposing (Location)
-import Routing exposing (parseLocation)
-import Test exposing (..)
-
-
-mockLocation : String -> Location
-mockLocation endpoint =
-    Location "" "" "" "" "" "" "" "" endpoint "" ""
+import Model exposing (Route(..))
+import Routing exposing (..)
+import Test exposing (Test, describe)
+import Url
 
 
 suite : Test
 suite =
-    describe "Routing"
+    describe "fromUrl"
         [ it "routes a user to the home page" <|
-            expect (parseLocation (mockLocation "#home")) to equal HomeRoute
+            expect (fromUrl homeUrl) to equal HomeRoute
         , it "routes a user to the balance sheet page" <|
-            expect (parseLocation (mockLocation "#balance_sheet")) to equal BalanceSheetRoute
+            expect (fromUrl balanceSheetUrl) to equal BalanceSheetRoute
         , it "routes a user to the upcoming expenses page" <|
-            expect (parseLocation (mockLocation "#upcoming_expenses")) to equal UpcomingExpensesRoute
+            expect (fromUrl upcomingExpensesUrl) to equal UpcomingExpensesRoute
         , it "returns a NotFoundRoute" <|
-            expect (parseLocation (mockLocation "#some_random_route")) to equal NotFoundRoute
+            expect
+                (fromUrl
+                    { protocol = Url.Http
+                    , host = "localhost"
+                    , port_ = Nothing
+                    , path = "not_found"
+                    , query = Nothing
+                    , fragment = Nothing
+                    }
+                )
+                to
+                equal
+                NotFoundRoute
         ]

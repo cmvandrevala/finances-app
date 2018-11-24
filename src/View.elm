@@ -1,27 +1,69 @@
 module View exposing (view)
 
 import BalanceSheetView
-import Html exposing (Html, div, h1, text)
-import Html.Attributes exposing (class)
+import Browser
+import Html exposing (Html, a, div, h1, li, text, ul)
+import Html.Attributes exposing (class, href)
 import Model exposing (..)
 import UpcomingExpensesView
 
 
-view : Model -> Html Msg
+view : Model -> Browser.Document Msg
 view model =
     case model.route of
         HomeRoute ->
-            div [ class "container" ]
-                [ h1 [] [ text "Home" ]
+            { title = model.appName
+            , body =
+                [ navigationBar
+                , homeView
                 ]
+            }
 
         BalanceSheetRoute ->
-            BalanceSheetView.view model
+            { title = model.appName
+            , body =
+                [ navigationBar
+                , BalanceSheetView.view model.balanceSheet
+                ]
+            }
 
         NotFoundRoute ->
-            div []
-                [ h1 [] [ text "Not Found" ]
+            { title = model.appName
+            , body =
+                [ navigationBar
+                , notFoundView
                 ]
+            }
 
         UpcomingExpensesRoute ->
-            UpcomingExpensesView.view model
+            { title = model.appName
+            , body =
+                [ navigationBar
+                , UpcomingExpensesView.view model
+                ]
+            }
+
+
+homeView : Html Msg
+homeView =
+    div [ class "container" ]
+        [ h1 [] [ text "Home" ]
+        ]
+
+
+notFoundView : Html Msg
+notFoundView =
+    div []
+        [ h1 [] [ text "Not Found" ]
+        ]
+
+
+navigationBar : Html Msg
+navigationBar =
+    div [ class "navbar" ]
+        [ ul []
+            [ li [] [ a [ href "home" ] [ text "Home" ] ]
+            , li [] [ a [ href "balance_sheet" ] [ text "Balance Sheet" ] ]
+            , li [] [ a [ href "upcoming_expenses" ] [ text "Upcoming Expenses" ] ]
+            ]
+        ]

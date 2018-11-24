@@ -1,13 +1,30 @@
 {
-  "scripts": {
-    "setup": "yarn install && elm-package install",
-    "test": "elm test",
-    "start": "rm -rf public && brunch build && brunch watch --server"
-  },
-  "devDependencies": {
-    "elm": "0.18",
-    "elm-brunch": "^0.11.1",
-    "brunch": "^2.10.17",
-    "elm-test": "^0.18.13-beta3"
-  }
+    "scripts": {
+      "dev": "webpack",
+      "prod": "webpack -p",
+      "start": "webpack-dev-server --hot --inline --colors",
+      "test": "elm-test"
+    },
+    "devDependencies": {
+      "clean-webpack-plugin": "^0.1.19",
+      "copy-webpack-plugin": "^4.5.2",
+      "css-loader": "^1.0.0",
+      "elm-hot-webpack-loader": "^1.0.2",
+      "elm-test": "^0.19.0-rev2",
+      "elm-verify-examples": "^3.0.1",
+      "elm-webpack-loader": "^5.0.0",
+      "elm": "^0.19.0-bugfix3",
+      "file-loader": "^2.0.0",
+      "html-webpack-plugin": "^3.2.0",
+      "node-sass": "^4.9.3",
+      "resolve-url-loader": "^3.0.0",
+      "rimraf": "^2.6.1",
+      "sass-loader": "^7.1.0",
+      "style-loader": "^0.23.0",
+      "url-loader": "^1.1.1",
+      "webpack": "^4.20.2",
+      "webpack-cli": "^3.1.2",
+      "webpack-dev-server": "^3.1.9",
+      "webpack-merge": "^4.1.4"
+    }
 }
