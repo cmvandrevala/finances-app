@@ -41,6 +41,9 @@ upcomingExpenses =
     , UpcomingExpenseRow "Down Payment on Car Lease" "May 2019" "$2000"
     , UpcomingExpenseRow "Offset Box Smoker or Weber Smoky Mountain Vertical Smoker" "May 2019" "$500"
     , UpcomingExpenseRow "MacBook Pro" "December 2019" "$2500"
+    , UpcomingExpenseRow "Furnace Replacement" "August 2020" "$7000"
+    , UpcomingExpenseRow "Humidifier Replacement" "August 2020" "$825"
+    , UpcomingExpenseRow "Cell Phone Bill" "Unknown" "$140/month"
     ]
 
 
