@@ -39,7 +39,7 @@ view model =
             { title = model.appName
             , body =
                 [ navigationBar
-                , UpcomingExpensesView.view model
+                , UpcomingExpensesView.view model.upcomingExpenses
                 ]
             }
 
