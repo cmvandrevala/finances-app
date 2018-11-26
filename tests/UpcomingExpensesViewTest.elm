@@ -20,33 +20,39 @@ suite =
                 |> Query.has [ text "Upcoming Expenses" ]
             )
         , it "displays a list with one upcoming expense" <|
-            (view (UpcomingExpenses [ UpcomingExpenseRow "Item" "Date" "$500" ])
+            (view (UpcomingExpenses [ UpcomingExpenseRow "Item" "Date" (Just 500) ])
                 |> Query.fromHtml
                 |> Query.findAll [ attribute <| Attr.attribute "data-id" "expense" ]
                 |> Query.count (Expect.equal 1)
             )
         , it "displays a list with two upcoming expenses" <|
-            (view (UpcomingExpenses [ UpcomingExpenseRow "Item" "Date" "$500", UpcomingExpenseRow "Item" "Date" "$500" ])
+            (view (UpcomingExpenses [ UpcomingExpenseRow "Item" "Date" (Just 500), UpcomingExpenseRow "Item" "Date" (Just 500) ])
                 |> Query.fromHtml
                 |> Query.findAll [ attribute <| Attr.attribute "data-id" "expense" ]
                 |> Query.count (Expect.equal 2)
             )
         , it "displays the item name" <|
-            (view (UpcomingExpenses [ UpcomingExpenseRow "Item" "Date" "$500" ])
+            (view (UpcomingExpenses [ UpcomingExpenseRow "Item" "Date" (Just 500) ])
                 |> Query.fromHtml
                 |> Query.find [ attribute <| Attr.attribute "data-id" "name" ]
                 |> Query.has [ text "Item" ]
             )
         , it "displays the estimated date of replacement" <|
-            (view (UpcomingExpenses [ UpcomingExpenseRow "Item" "Date" "$500" ])
+            (view (UpcomingExpenses [ UpcomingExpenseRow "Item" "Date" (Just 500) ])
                 |> Query.fromHtml
                 |> Query.find [ attribute <| Attr.attribute "data-id" "date-of-replacement" ]
                 |> Query.has [ text "Date" ]
             )
         , it "displays the cost" <|
-            (view (UpcomingExpenses [ UpcomingExpenseRow "Item" "Date" "$500" ])
+            (view (UpcomingExpenses [ UpcomingExpenseRow "Item" "Date" (Just 500) ])
                 |> Query.fromHtml
                 |> Query.find [ attribute <| Attr.attribute "data-id" "cost" ]
                 |> Query.has [ text "$500" ]
+            )
+        , it "displays a cost of 'Unknown' for an unknown cost" <|
+            (view (UpcomingExpenses [ UpcomingExpenseRow "Item" "Date" Nothing ])
+                |> Query.fromHtml
+                |> Query.find [ attribute <| Attr.attribute "data-id" "cost" ]
+                |> Query.has [ text "Unknown" ]
             )
         ]

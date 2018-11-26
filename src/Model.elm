@@ -41,7 +41,7 @@ type alias BalanceSheetRow =
 type alias UpcomingExpenseRow =
     { itemNeedingReplacement : String
     , estimatedDateOfExpense : String
-    , estimatedCost : String
+    , estimatedCost : Maybe Int
     }
 
 
@@ -79,16 +79,15 @@ init flags url key =
 
 upcomingExpenses : List UpcomingExpenseRow
 upcomingExpenses =
-    [ UpcomingExpenseRow "Main Refrigerator" "October 2019" "$2400"
-    , UpcomingExpenseRow "Garage Renovation" "May 2019" "$5000"
-    , UpcomingExpenseRow "Nine Piece Dining Room Set" "May 2019" "$1400"
-    , UpcomingExpenseRow "Down Payment on Car Lease" "May 2019" "$2000"
-    , UpcomingExpenseRow "Offset Box Smoker or Weber Smoky Mountain Vertical Smoker" "May 2019" "$500"
-    , UpcomingExpenseRow "MacBook Pro" "December 2019" "$2500"
-    , UpcomingExpenseRow "Furnace Replacement" "August 2020" "$7000"
-    , UpcomingExpenseRow "Humidifier Replacement" "August 2020" "$825"
-    , UpcomingExpenseRow "Cell Phone Bill" "Unknown" "$140/month"
-    , UpcomingExpenseRow "Mini-Fridge" "Unknown" "$200"
-    , UpcomingExpenseRow "Renovation of Closet Under Stairs" "Unknown" "Unknown"
-    , UpcomingExpenseRow "Sliding Shelves for Kitchen Cabinets" "Unknown" "Unknown"
+    [ UpcomingExpenseRow "Main Refrigerator" "October 2019" (Just 2400)
+    , UpcomingExpenseRow "Garage Renovation" "May 2019" (Just 5000)
+    , UpcomingExpenseRow "Nine Piece Dining Room Set" "May 2019" (Just 1400)
+    , UpcomingExpenseRow "Down Payment on Car Lease" "May 2019" (Just 2000)
+    , UpcomingExpenseRow "Offset Box Smoker or Weber Smoky Mountain Vertical Smoker" "May 2019" (Just 500)
+    , UpcomingExpenseRow "MacBook Pro" "December 2019" (Just 2500)
+    , UpcomingExpenseRow "Furnace Replacement" "August 2020" (Just 7000)
+    , UpcomingExpenseRow "Humidifier Replacement" "August 2020" (Just 825)
+    , UpcomingExpenseRow "Mini-Fridge" "Unknown" (Just 200)
+    , UpcomingExpenseRow "Renovation of Closet Under Stairs" "Unknown" Nothing
+    , UpcomingExpenseRow "Sliding Shelves for Kitchen Cabinets" "Unknown" Nothing
     ]

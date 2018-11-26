@@ -29,5 +29,15 @@ formattedUpcomingExpenseRow upcomingExpenseRow =
     tr [ Attr.attribute "data-id" "expense" ]
         [ td [ Attr.attribute "data-id" "name" ] [ text upcomingExpenseRow.itemNeedingReplacement ]
         , td [ Attr.attribute "data-id" "date-of-replacement" ] [ text upcomingExpenseRow.estimatedDateOfExpense ]
-        , td [ Attr.attribute "data-id" "cost" ] [ text upcomingExpenseRow.estimatedCost ]
+        , td [ Attr.attribute "data-id" "cost" ] [ text (formattedCost upcomingExpenseRow.estimatedCost) ]
         ]
+
+
+formattedCost : Maybe Int -> String
+formattedCost estimatedCost =
+    case Maybe.map String.fromInt estimatedCost of
+        Just str ->
+            "$" ++ str
+
+        Nothing ->
+            "Unknown"
